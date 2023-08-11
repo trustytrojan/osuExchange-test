@@ -1,4 +1,5 @@
 {
 	"client_id": "22807",
-	"client_secret": "U66rYlKGk6FshCKT6EpGw9WX98VoVFj2mDbOBlaQ"
+	"client_secret": "U66rYlKGk6FshCKT6EpGw9WX98VoVFj2mDbOBlaQ",
+	"redirect_uri": "http://localhost:6969"
 }
