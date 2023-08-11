@@ -2,4 +2,5 @@ bin
 include
 lib*
 *.cfg
+quick-install-self.sh
 *token*
