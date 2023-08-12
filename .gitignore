@@ -5,3 +5,4 @@ lib*
 quick-install-self.sh
 discord-bot-token
 __pycache__
+*.json
