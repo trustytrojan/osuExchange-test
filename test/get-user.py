@@ -1,12 +1,12 @@
-from osuExchange.users import get_user
+from osuExchange import OsuApiClient
 
-access_token = open("token", "r").read()
+client = OsuApiClient.from_json_file('client-info.json')
 
 user_id = 10652591
 
 print(f'Fetching user with id {user_id} for mode "osu"')
 
-user = get_user(access_token, user_id, mode='osu')
+user = client.users.get(user_id, mode='osu')
 
 print('Fetched user! Now printing a few details:\n')
 

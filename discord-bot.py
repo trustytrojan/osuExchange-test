@@ -24,7 +24,7 @@ async def on_ready():
 @client.tree.command(guild=TESTING_GUILD)
 async def get_user(interaction: discord.Interaction, id: int):
 	"""Get info about an osu! player."""
-	user = osu_client.get_user(id)
+	user = osu_client.users.get(id)
 	assert user.rank_highest
 	embed = discord.Embed(title=user.username)
 	embed.set_author(name='osu! player info')
@@ -43,4 +43,4 @@ async def add(interaction: discord.Interaction, first_value: int, second_value: 
 	"""Adds two numbers together."""
 	await interaction.response.send_message(f'{first_value} + {second_value} = {first_value + second_value}')
 
-client.run(open('bot-token').read())
+client.run(open('discord-bot-token').read())
