@@ -22,7 +22,7 @@ async def on_ready():
 	print(f'Logged in as {client.user} (ID: {client.user.id})')
 
 @client.tree.command(guild=TESTING_GUILD)
-async def get_user(interaction: discord.Interaction, id: int):
+async def get_user(interaction: discord.Interaction, id: int | str):
 	"""Get info about an osu! player."""
 	user = osu_client.users.get(id)
 	assert user.rank_highest
@@ -33,14 +33,5 @@ async def get_user(interaction: discord.Interaction, id: int):
 	if user.beatmap_playcounts_count:
 		embed.add_field(name='Total Beatmaps Played', value=user.beatmap_playcounts_count)
 	await interaction.response.send_message(embed=embed)
-
-@client.tree.command()
-@discord.app_commands.describe(
-	first_value='The first value you want to add something to',
-	second_value='The value you want to add to the first value',
-)
-async def add(interaction: discord.Interaction, first_value: int, second_value: int):
-	"""Adds two numbers together."""
-	await interaction.response.send_message(f'{first_value} + {second_value} = {first_value + second_value}')
 
 client.run(open('discord-bot-token').read())
