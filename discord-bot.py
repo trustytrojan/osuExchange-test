@@ -13,6 +13,7 @@ class OsuExchangeBot(discord.Client):
 	
 	async def setup_hook(self):
 		await self.tree.sync(guild=TESTING_GUILD)
+		print(f'Commands in guild {TESTING_GUILD.id} updated')
 
 client = OsuExchangeBot()
 
@@ -22,9 +23,9 @@ async def on_ready():
 	print(f'Logged in as {client.user} (ID: {client.user.id})')
 
 @client.tree.command(guild=TESTING_GUILD)
-async def get_user(interaction: discord.Interaction, id: int | str):
+async def get_user(interaction: discord.Interaction, username_or_id: str):
 	"""Get info about an osu! player."""
-	user = osu_client.users.get(id)
+	user = osu_client.users.get(username_or_id)
 	assert user.rank_highest
 	embed = discord.Embed(title=user.username)
 	embed.set_author(name='osu! player info')
